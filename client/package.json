@@ -1,0 +1,40 @@
+{
+  "name": "client-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint src && preact test",
+    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
+    "build": "preact build",
+    "serve": "preact build && preact serve",
+    "dev": "preact watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-synacor",
+      "airbnb/base"
+    ],
+    "rules": {
+      "no-underscore-dangle": "off",
+      "no-plusplus": "off"
+    }
+  },
+  "dependencies": {
+    "debugger_js": "^1.0.8",
+    "extend": "^3.0.1",
+    "preact-redux": "^2.0.2",
+    "redux": "^3.7.2",
+    "socket.io-client": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.2",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1"
+  }
+}
