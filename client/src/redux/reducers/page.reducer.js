@@ -1,7 +1,7 @@
 const extend = require('extend');
 
 const initialState = {
-  page: 'JOIN_GAME',
+  page: 'HOST_GAME',
 };
 
 module.exports = {

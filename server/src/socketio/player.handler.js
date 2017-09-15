@@ -1,7 +1,37 @@
-const { users, rooms } = require('./init.handler');
+const { rooms } = require('./init.handler');
+const { emitter } = require('./../utility/socketHandlers');
+const pf = require('./../utility/playerFunctions');
+const { roomCapacity } = require('./../utility/constants');
+
+
+const makeRoomKey = () => {
+  let text = '';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  for (let i = 0; i < 20; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+};
 
 const handlers = {
+  makeRoom: (_socket, _data) => {
+    const socket = _socket;
+    const data = _data;
 
+    const roomKey = makeRoomKey();
+    rooms[roomKey] = {
+      key: roomKey,
+      name: data.roomName,
+      occupancy: 1,
+      capacity: roomCapacity,
+      occupants: [data.name],
+    };
+
+    emitter({ socket, eventName: 'madeRoom' });
+
+    // Join the created room
+    pf.joinRoom(socket, data.roomKey);
+  },
+  joinRoom: (_socket, _data) => { pf.joinRoom(_socket, _data.roomKey); },
+  leaveRoom: (_socket, _data) => { pf.leaveRoom(_socket, _data.roomKey); },
 };
 
 module.exports = (socket, data) => handlers[data.eventName](socket, data.data);

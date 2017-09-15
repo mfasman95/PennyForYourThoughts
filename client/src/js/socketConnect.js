@@ -6,10 +6,12 @@ const { store } = require('./../redux/combineReducers');
 const handlers = {
 };
 
+let socket;
+
 module.exports = {
   init: (SERVER_URL) => {
     logger.log('log', `Connecting to ${SERVER_URL}...`);
-    const socket = io(SERVER_URL);
+    socket = io(SERVER_URL);
 
     socket.on('connect', () => store.dispatch({ type: 'CONNECT' }));
 
@@ -20,11 +22,10 @@ module.exports = {
         handlers[res.eventName](res.data);
       }
     });
-
-    module.emitter = (props) => {
-      if (!props.eventName) logger.log('error', 'Missing event name in props for emitter function', props);
-      socket.emit('PlayerEmit', { eventName: props.eventName, data: props.data || 'No Data   Provided' });
-      logger.log('SocketOut', `Event ${props.eventName} sent to ${props.socket.name}`);
-    };
+  },
+  emitter: (props) => {
+    if (!props.eventName) logger.log('error', 'Missing event name in props for emitter function', props);
+    socket.emit('PlayerEvent', { eventName: props.eventName, data: props.data || 'No Data   Provided' });
+    logger.log('SocketOut', `Event ${props.eventName} sent to ${props.socket.name}`);
   },
 };

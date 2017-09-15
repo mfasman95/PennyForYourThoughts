@@ -3,6 +3,7 @@ import { h, Component } from 'preact';
 import { Well, Button } from 'react-bootstrap';
 
 import { emitter } from './../../js/socketConnect';
+
 import Input from './../misc/input.comp';
 
 const roomButtonStyle = {
@@ -16,7 +17,8 @@ class JoinGame extends Component {
 
     this.state = {
       nameInput: '',
-    }
+    };
+    
     this.HINameInput = this.HINameInput.bind(this);
     this.joinRoom = this.joinRoom.bind(this);
   }
@@ -24,7 +26,6 @@ class JoinGame extends Component {
   HINameInput(e) { this.setState({nameInput: e}) }
 
   joinRoom(room) {
-    console.log(room);
     emitter({
       eventName: 'joinRoom',
       data: {
