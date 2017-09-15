@@ -2,11 +2,11 @@ const { logType, makeLogger } = require('debugger_js');
 
 const SocketIn = logType({
   logStyle: 'Socket In',
-  textColor: '#0000FF'
+  textColor: '#0000FF',
 });
 const SocketOut = logType({
   logStyle: 'Socket Out',
-  textColor: '#00FF00'
+  textColor: '#00FF00',
 });
 
 module.exports = {
@@ -25,5 +25,5 @@ module.exports = {
       SocketIn,
       SocketOut,
     },
-  }) 
-}
+  }),
+};

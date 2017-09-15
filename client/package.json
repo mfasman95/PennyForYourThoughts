@@ -14,19 +14,19 @@
   "author": "",
   "license": "ISC",
   "eslintConfig": {
-    "extends": [
-      "eslint-config-synacor",
-      "airbnb/base"
-    ],
+    "extends": "airbnb/base",
     "rules": {
       "no-underscore-dangle": "off",
       "no-plusplus": "off"
     }
   },
   "dependencies": {
+    "bootstrap": "3",
     "debugger_js": "^1.0.8",
     "extend": "^3.0.1",
     "preact-redux": "^2.0.2",
+    "react-bootstrap": "^0.31.3",
+    "react-fontawesome": "^1.6.1",
     "redux": "^3.7.2",
     "socket.io-client": "^2.0.3"
   },

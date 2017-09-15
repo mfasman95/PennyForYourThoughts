@@ -1,19 +1,16 @@
-import extend from 'extend';
+const extend = require('extend');
 
 const initialState = {
-  page: 'MAIN',
+  page: 'JOIN_GAME',
+};
 
-}
-
-export default function page (state=initialState, action) {
-  const rs = extend(true, {}, state);
-  switch (action.type) {
-    case 'CHANGE_PAGE': {
-      rs.page = action.page;
-      return rs;
+module.exports = {
+  page: (state = initialState, action) => {
+    const rs = extend(true, {}, state);
+    switch (action.type) {
+      case 'CHANGE_PAGE': { rs.page = action.page; break; }
+      default: { break; }
     }
-    default: {
-      return rs;
-    }
-  }
-}
+    return rs;
+  },
+};
