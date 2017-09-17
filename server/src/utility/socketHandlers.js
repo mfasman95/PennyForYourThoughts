@@ -6,12 +6,14 @@ const playerHandler = require('./../socketio/player.handler.js');
 let io;
 
 module.exports = {
-  init: (_io) => { io = _io; },
+  init: (_io) => {
+    io = _io;
+  },
   setEventHandlers: (socket) => {
     socket.on('disconnect', data => dcHandler(socket, data));
     socket.on('connection', data => initHandler(socket, data));
     socket.on('PlayerEvent', data => playerHandler(socket, data));
-    log(`A socket connection has been established with socket ${socket.id}`);
+    log(`Socket handlers set for socket ${socket.id}`);
   },
   emitter: (props) => {
     if (!props.socket) error('No socket provided in props for emitter function', props);

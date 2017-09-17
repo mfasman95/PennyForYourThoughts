@@ -2,14 +2,7 @@ const { rooms } = require('./init.handler');
 const { emitter } = require('./../utility/socketHandlers');
 const pf = require('./../utility/playerFunctions');
 const { roomCapacity } = require('./../utility/constants');
-
-
-const makeRoomKey = () => {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (let i = 0; i < 20; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
-  return text;
-};
+const { makeRoomKey } = require('./../utility/misc');
 
 const handlers = {
   makeRoom: (_socket, _data) => {
