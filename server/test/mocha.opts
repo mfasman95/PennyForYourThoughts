@@ -1,1 +1,6 @@
+--require test/env
+--timeout 2000
+--reporter spec
+--bail
+--check-leaks
 --recursive

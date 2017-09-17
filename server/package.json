@@ -9,7 +9,7 @@
     "start": "node ./src/server.js",
     "nodemon": "nodemon ./src/server.js",
     "pretest": "eslint ./src --fix",
-    "test": "mocha --recursive"
+    "test": "mocha"
   },
   "dependencies": {
     "chalk": "^2.1.0",

@@ -25,6 +25,7 @@ const handlers = {
   },
   joinRoom: (_socket, _data) => { pf.joinRoom(_socket, _data.roomKey); },
   leaveRoom: (_socket, _data) => { pf.leaveRoom(_socket, _data.roomKey); },
+  test: (_socket, _data) => { _socket.emit('ServerEmit', { _data }); },
 };
 
 module.exports = (socket, data) => handlers[data.eventName](socket, data.data);
