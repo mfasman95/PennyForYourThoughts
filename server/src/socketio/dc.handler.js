@@ -1,4 +1,4 @@
-const { users, rooms } = require('./init.handler');
+const { users } = require('./init.handler');
 const pf = require('./../utility/playerFunctions');
 
 module.exports = (socket) => {

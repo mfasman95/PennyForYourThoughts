@@ -1,13 +1,16 @@
 const { socketOut, error, log } = require('./logger');
+const dcHandler = require('./../socketio/dc.handler.js');
+const initHandler = require('./../socketio/init.handler.js');
+const playerHandler = require('./../socketio/player.handler.js');
 
 let io;
 
 module.exports = {
   init: (_io) => { io = _io; },
   setEventHandlers: (socket) => {
-    socket.on('disconnect', data => require('./socketio/dc.handler.js')(socket, data));
-    socket.on('connection', data => require('./socketio/init.handler.js')(socket, data));
-    socket.on('PlayerEvent', data => require('./socketio/player.handler.js')(socket, data));
+    socket.on('disconnect', data => dcHandler(socket, data));
+    socket.on('connection', data => initHandler(socket, data));
+    socket.on('PlayerEvent', data => playerHandler(socket, data));
     log(`A socket connection has been established with socket ${socket.id}`);
   },
   emitter: (props) => {

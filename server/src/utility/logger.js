@@ -21,7 +21,9 @@ const logLoop = (chalkType, arr) => {
         default: { console.log(chalkType(data)); break; }
       }
     }
+    return true;
   }
+  return undefined;
 };
 
 const chalkError = (...data) => logLoop(chalk.bold.red, data);
