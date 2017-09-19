@@ -1,5 +1,5 @@
-const { roomCapacity } = require('./constants');
-const { makeKey } = require('./misc');
+const { roomCapacity } = require('./../utility/constants');
+const { makeKey } = require('./../utility/misc');
 
 module.exports = {
   makeRoom: (name) => {

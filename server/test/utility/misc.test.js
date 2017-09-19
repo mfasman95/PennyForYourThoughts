@@ -9,7 +9,7 @@ describe('Misc Function Testing', function(){
     it('Should be a string', function(){
       expect(key).to.be.a('string');
     });
-    it('Should be 20 characters long', function(){
+    it('Should be the specified length', function(){
       expect(key.length).to.equal(keyLength);
     });
   });

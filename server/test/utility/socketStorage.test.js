@@ -1,5 +1,5 @@
 /* eslint-disable */
-const { makeRoomStore, makeRoom } = require('./../../src/utility/socketStorage');
+const { makeRoomStore, makeRoom } = require('./../../src/socketio/socketStorage');
 const { roomCapacity } = require('./../../src/utility/constants');
 const { expect } = require('chai');
 

@@ -1,5 +1,5 @@
-const { rooms } = require('./../socketio/init.handler');
-const { emitter } = require('./socketHandlers');
+const { rooms } = require('./../socketio/handlers/init.handler');
+const { emitter } = require('./../socketio/socketHandlers');
 const { roomCapacity } = require('./constants');
 
 module.exports = {

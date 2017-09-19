@@ -1,7 +1,7 @@
-const { log } = require('./logger');
-const dcHandler = require('./../socketio/dc.handler.js');
-const initHandler = require('./../socketio/init.handler.js');
-const playerHandler = require('./../socketio/player.handler.js');
+const { log } = require('./../utility/logger');
+const dcHandler = require('./handlers/dc.handler.js');
+const initHandler = require('./handlers/init.handler.js');
+const playerHandler = require('./handlers/player.handler.js');
 
 module.exports = {
   setEventHandlers: (socket) => {

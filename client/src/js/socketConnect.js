@@ -22,6 +22,8 @@ module.exports = {
         handlers[res.eventName](res.data);
       }
     });
+    socket.emit('test', 'test message');
+    socket.on('test', data => logger.log('SocketIn', data));
   },
   emitter: (props) => {
     if (!props.eventName) logger.log('error', 'Missing event name in props for emitter function', props);

@@ -1,8 +1,8 @@
 const { rooms } = require('./init.handler');
-const { emitter } = require('./../utility/socketHandlers');
-const pf = require('./../utility/playerFunctions');
-const { roomCapacity } = require('./../utility/constants');
-const { makeRoomKey } = require('./../utility/misc');
+const playerEmitters = require('./../emitters/player.emitters');
+const pf = require('./../../utility/playerFunctions');
+const { roomCapacity } = require('./../../utility/constants');
+const { makeRoomKey } = require('./../../utility/misc');
 
 const handlers = {
   makeRoom: (_socket, _data) => {
@@ -18,10 +18,15 @@ const handlers = {
       occupants: [data.name],
     };
 
-    emitter({ socket, eventName: 'madeRoom' });
+    playerEmitters.eMadeRoom({})(socket);
 
-    // Join the created room
-    pf.joinRoom(socket, data.roomKey);
+    const roomData = Object.freeze({
+      roomKey: data.roomKey,
+      roomName: data.roomName,
+    });
+    const userData = { id: socket.id };
+    playerEmitters.bcJoinRoom(Object.assign({}, roomData, userData))(data.roomName);
+    playerEmitters.eJoinedRoom(roomData)(socket);
   },
   joinRoom: (_socket, _data) => { pf.joinRoom(_socket, _data.roomKey); },
   leaveRoom: (_socket, _data) => { pf.leaveRoom(_socket, _data.roomKey); },
