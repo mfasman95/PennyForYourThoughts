@@ -1,6 +1,4 @@
 --require test/env
---timeout 30000
---reporter spec
---bail
---check-leaks
+--timeout 2000
 --recursive
+--compilers js:babel-register

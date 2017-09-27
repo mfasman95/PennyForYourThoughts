@@ -1,12 +1,17 @@
-const emitters = require('./../socketEmitters');
+/*
+import em from './../socketEmitters';
 
+const { cEmit, cBroadcastToRoom } = em;
+
+console.log('Potatoes!');
 console.log('Hello World');
-console.log(emitters);
+console.log(em);
 
-module.exports = Object.freeze({
-  bcJoinRoom: emitters.cBroadcastToRoom('userJoinedRoom'),
-  bcLeaveRoom: emitters.cBroadcastToRoom('userLeftRoom'),
-  eMadeRoom: emitters.cEmit('madeRoom'),
-  eJoinedRoom: emitters.cEmit('joinedRoom'),
-  eLeftRoom: emitters.cEmit('leftRoom'),
+export default Object.freeze({
+  bcJoinRoom: cBroadcastToRoom('userJoinedRoom'),
+  bcLeaveRoom: cBroadcastToRoom('userLeftRoom'),
+  eMadeRoom: cEmit('madeRoom'),
+  eJoinedRoom: cEmit('joinedRoom'),
+  eLeftRoom: cEmit('leftRoom'),
 });
+*/

@@ -1,33 +1,32 @@
 /* eslint-disable */
-const constants = require('./../../src/utility/constants');
-const { expect } = require('chai');
+import constants from './../../src/utility/constants';
+import { expect } from 'chai';
+
+import testingUtilities from './../testingUtilities';
+const { paramExists, validateInt, validateString } = testingUtilities;
 
 describe('Constants', function() {
   describe('# constants.roomCapacity', function() {
-    it('Should match required constraints', function() {
-      expect(constants.roomCapacity).to.be.a('number');
-      expect(constants.roomCapacity % 1).to.equal(0);
+    it('Should exist', paramExists(constants.roomCapacity));
+    it('Should be an integer', validateInt(constants.roomCapacity));
+    it('Should be greater than 1', function() {
       expect(constants.roomCapacity).to.be.greaterThan(1);
-      expect(constants.roomCapacity).to.not.equal(undefined);
-      expect(constants.roomCapacity).to.not.equal(null);
     });
   });
   describe('# constants.rootStoreName', function() {
-    it('Should match required constraints', function() {
-      expect(constants.rootStoreName).to.be.a('string');
-      expect(constants.rootStoreName.length).to.be.greaterThan(0);
-      expect(constants.rootStoreName).to.not.equal(undefined);
-      expect(constants.rootStoreName).to.not.equal(null);
-    });
+    it('Should exist', paramExists(constants.rootStoreName));
+    it('Should be a string', validateString(constants.rootStoreName));
   });
   describe('# constants.DEFAULT_PORT', function() {
-    it('Should match required constraints', function() {
-      expect(constants.DEFAULT_PORT).to.be.a('number');
-      expect(constants.DEFAULT_PORT % 1).to.equal(0);
+    it('Should exist', paramExists(constants.DEFAULT_PORT));
+    it('Should be an integer', validateInt(constants.DEFAULT_PORT));
+    it('Should be within the range of valid port numbers', function() {
       expect(constants.DEFAULT_PORT).to.not.be.lessThan(0);
       expect(constants.DEFAULT_PORT).to.be.lessThan(65535);
-      expect(constants.DEFAULT_PORT).to.not.equal(undefined);
-      expect(constants.DEFAULT_PORT).to.not.equal(null);
     });
+  });
+  describe('# constants.EMIT_NAME', function() {
+    it('Should exist', paramExists(constants.EMIT_NAME));
+    it('Should be a string', validateString(constants.EMIT_NAME));
   });
 });

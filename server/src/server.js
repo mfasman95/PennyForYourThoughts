@@ -26,19 +26,19 @@ exports.io = io;
 
 const readline = require('readline');
 
-if (process.platform === 'win32' || process.platform === 'win64') {
+if ((process.platform === 'win32' || process.platform === 'win64') && process.env.NODE_ENV !== 'test') {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
   rl.question('(WINDOWS) Press enter to kill this process...\n', () => {
-    console.log('Emitting SIGINT to the process...\n');
+    log('Emitting SIGINT to the process...\n');
     process.emit('SIGINT');
   });
 }
 process.on('SIGINT', () => {
-  console.log('Gracefully shutting down QueueServer.js...');
+  log('Gracefully shutting down QueueServer.js...');
   // graceful shutdown
   process.exit();
 });
